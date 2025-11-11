@@ -15,37 +15,43 @@ export default function Complain() {
     reset();
   };
 
+  const COLORS = {
+    primary: '#FF6B35',
+    secondary: '#735343',
+    background: '#FBF7F3',
+    inputBorder: '#CFC6C1',
+    text: '#1E1E1E',
+    error: '#D14343'
+  };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="max-w-md mx-auto mt-5 p-5 rounded-lg border border-gray-200 bg-white shadow-sm 
-                 hover:drop-shadow-2xl hover:translate-y-2  "
-
+      className="max-w-md mx-auto mt-5 p-5 rounded-lg border shadow-sm"
+      style={{ backgroundColor: COLORS.background, borderColor: COLORS.secondary }}
     >
-   
       <div className="text-center mb-5 pb-3">
         <div className="flex justify-center items-center mb-2">
           <img src={logo} alt="PickBazar Logo" className="h-28 w-auto object-contain" />
         </div>
       </div>
 
-      <h2 className="text-xl font-bold mb-4 text-center f-[raleway]">REGISTER COMPLAIN</h2>
+      <h2 className="text-xl font-bold mb-4 text-center" style={{ color: COLORS.text }}>REGISTER COMPLAIN</h2>
 
-    
-      <label className="block mt-2 font-semibold text-sm">Full name</label>
+      <label className="block mt-2 font-semibold text-sm" style={{ color: COLORS.text }}>Full name</label>
       <input
         {...register("name", {
           required: "Name is required",
           minLength: { value: 2, message: "Name must be at least 3 characters" },
         })}
         placeholder="e.g. Yahya Shah"
-        className="w-full mt-1 p-2 border rounded-md border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
+        className="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring"
+        style={{ borderColor: COLORS.inputBorder }}
       />
-      {errors.name && <p className="text-red-600 text-xs mt-1">{errors.name.message}</p>}
+      {errors.name && <p className="text-xs mt-1" style={{ color: COLORS.error }}>{errors.name.message}</p>}
 
-   
-      <label className="block mt-3 font-semibold text-sm">Email</label>
+      <label className="block mt-3 font-semibold text-sm" style={{ color: COLORS.text }}>Email</label>
       <input
         type="email"
         {...register("email", {
@@ -53,24 +59,24 @@ export default function Complain() {
           pattern: { value: /^\S+@\S+\.\S+$/, message: "Enter a valid email" },
         })}
         placeholder="address@example.com"
-        className="w-full mt-1 p-2 border rounded-md border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
+        className="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring"
+        style={{ borderColor: COLORS.inputBorder }}
       />
-      {errors.email && <p className="text-red-600 text-xs mt-1">{errors.email.message}</p>}
+      {errors.email && <p className="text-xs mt-1" style={{ color: COLORS.error }}>{errors.email.message}</p>}
 
- 
-      <label className="block mt-3 font-semibold text-sm">Write Complain</label>
+      <label className="block mt-3 font-semibold text-sm" style={{ color: COLORS.text }}>Write Complain</label>
       <textarea
         {...register("complain", {
           required: "Write Your Complain",
         })}
         placeholder="Text......"
         rows="3"
-        className="w-full mt-1 p-2 border rounded-md border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
+        className="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring"
+        style={{ borderColor: COLORS.inputBorder }}
       />
-      {errors.complain && <p className="text-red-600 text-xs mt-1">{errors.complain.message}</p>}
+      {errors.complain && <p className="text-xs mt-1" style={{ color: COLORS.error }}>{errors.complain.message}</p>}
 
-   
-      <label className="flex items-center gap-2 mt-3 font-medium text-sm">
+      <label className="flex items-center gap-2 mt-3 font-medium text-sm" style={{ color: COLORS.text }}>
         <input
           type="checkbox"
           {...register("terms", { required: "You must accept the terms" })}
@@ -78,13 +84,18 @@ export default function Complain() {
         />
         I accept the terms & conditions
       </label>
-      {errors.terms && <p className="text-red-600 text-xs mt-1">{errors.terms.message}</p>}
+      {errors.terms && <p className="text-xs mt-1" style={{ color: COLORS.error }}>{errors.terms.message}</p>}
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full mt-4 bg-[#3bb3b8] text-white font-semibold py-2 rounded-lg 
-         hover:bg-[#5bd7dd] active:bg-[#4cc4ca] transition-all"
+        className="w-full mt-4 font-semibold py-2 rounded-lg transition-all"
+        style={{
+          backgroundColor: COLORS.primary,
+          color: '#fff',
+        }}
+        onMouseEnter={e => e.currentTarget.style.backgroundColor = COLORS.secondary}
+        onMouseLeave={e => e.currentTarget.style.backgroundColor = COLORS.primary}
       >
         {isSubmitting ? "Submitting..." : "Register"}
       </button>

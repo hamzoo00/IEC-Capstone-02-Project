@@ -23,7 +23,7 @@ export default function AllProducts(){
        
 return (
        <> 
-           <Box>
+           <Box sx={{pt:'3rem'}}>
             <FormControl sx={{ marginLeft: 4, marginBottom: 4, minWidth: 130 }}>
            <InputLabel id="demo-simple-select-autowidth-label" >Category</InputLabel>
            <Select
@@ -46,7 +46,8 @@ return (
          </FormControl>
         </Box>
 
-        <Box className=" grid grid-cols-4 gap-6 px-8 pb-4 overflow-x-hidden w-full">
+        <Box className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+                         gap-6 px-8 pb-4 overflow-x-hidden w-full">
           {Products
                        .filter((product) => 
                          Category === "" || product.category.toLowerCase() === Category.toLowerCase()

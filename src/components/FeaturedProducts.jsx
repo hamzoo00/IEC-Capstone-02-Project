@@ -140,10 +140,11 @@ export default function FeaturedProduct (){
 
     return (
        <> 
-        <Typography variant="h4" component="div" className="font-[raleway] pb-5 ps-10">
+        <Typography variant="h4" component="div" className="font-[raleway] text-center sm:text-start pb-8 sm:pb-5 sm:ps-10 pt-10 ">
             Featured Products
         </Typography>
-      <Box className=" grid grid-cols-4 gap-6 px-8 pb-4 overflow-x-hidden w-full"> 
+      <Box className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+                        gap-6 px-8 pb-4 overflow-x-hidden w-full"> 
         {productsData.filter((p)=> p.productId%2 ==0)
         .map((product)=>(
        
