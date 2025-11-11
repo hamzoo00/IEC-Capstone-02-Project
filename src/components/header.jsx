@@ -1,5 +1,5 @@
 // import { Link } from "react-router"
-import logo from '../assets/logo.png'
+import logo from '../assets/logoHeader.png'
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import {Link} from 'react-router'
@@ -40,6 +40,16 @@ Header.propTypes = {
   window: PropTypes.func,
 };
 
+  const COLORS = {
+        primaryNeutral: '#735343',    
+        background: '#FBF7F3',      
+        ctaAccent: '#FF6B35',         
+        accentSecondary: '#2F4F3F',   // Deep Olive
+        textDark: '#1E1E1E',          
+        muted: '#CFC6C1',            
+    };
+
+
 
 export function Header(props){
 
@@ -64,12 +74,13 @@ const { window } = props;
       
       <Divider />
       <List>
-          <Box sx={{mt: "3rem", textAlign:'start', paddingLeft:"2rem"}}> <Link to="/" className='font-[raleway] font-bold text-center'> Home </Link> </Box>
-          <Box sx={{mt: "2rem", textAlign:'start', paddingLeft:"2rem"}}> <Link to="/products" className='font-[raleway] font-bold text-center'> All Products </Link> </Box>
-          <Box sx={{mt: "2rem", textAlign:'start', paddingLeft:"2rem"}}> <Link to="/complain" className='font-[raleway] font-bold text-center'> Register Complain </Link> </Box>
+          <Box sx={{mt: "3rem", textAlign:'start', paddingLeft:"2rem", color:COLORS.accentSecondary}}> <Link to="/" className='font-[raleway] font-bold text-center'> Home </Link> </Box>
+          <Box sx={{mt: "2rem", textAlign:'start', paddingLeft:"2rem", color:COLORS.accentSecondary}}> <Link to="/products" className='font-[raleway] font-bold text-center'> All Products </Link> </Box>
+          <Box sx={{mt: "2rem", textAlign:'start', paddingLeft:"2rem", color:COLORS.accentSecondary}}> <Link to="/complain" className='font-[raleway] font-bold text-center'> Register Complain </Link> </Box>
       </List>
     </Box>
   );
+
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -78,7 +89,7 @@ const { window } = props;
       <Box sx={{ display: 'flex', }}>
       <CssBaseline />
       <AppBar component="nav" sx={{position:'relative'}}>
-        <Toolbar>
+        <Toolbar sx={{background: COLORS.primaryNeutral}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -98,17 +109,20 @@ const { window } = props;
             </Link>
           </Box>
 
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-             <Link to="/products" className='font-[raleway] font-bold mr-5'> All Products </Link>
-             <Link to="/complain" className='font-[raleway] font-bold mr-7'> Register Complain </Link>
+          <Box sx={{ display: { xs: 'none', sm: 'block' }, color:COLORS.background }}>
+             <Link to="/products" className='font-[raleway] font-bold mr-5 hover:text-[#FF6B35]'> All Products </Link>
+             <Link to="/complain" className='font-[raleway] font-bold mr-7 hover:text-[#FF6B35]'> Register Complain </Link>
           </Box>
 
             
              <Link to="/cart" className='font-[raleway] font-bold'>
               
-                 <IconButton  sx={{display: { xs: 'flex' }, justifyContent:{xs:'end',}}}>
-                    <ShoppingCartIcon fontSize="large" className='color-[#2F4F3F]' />
-                    <CartBadge badgeContent={ItemsInCart} color="primary" overlap="circular" />
+                 <IconButton  sx={{display:'flex' , justifyContent:'end', color:COLORS.textDark, 
+                  '&:hover': {
+                   color: COLORS.ctaAccent,
+                   }, }}>
+                    <ShoppingCartIcon fontSize="large"  />
+                    <CartBadge badgeContent={ItemsInCart}  overlap="circular"sx={{color: COLORS.ctaAccent}} />
                  </IconButton>
                 
            
@@ -124,7 +138,7 @@ const { window } = props;
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true, 
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },

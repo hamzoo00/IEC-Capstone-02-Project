@@ -28,7 +28,7 @@ export default function ProductDetails() {
     }
 
     const product = {
-        productId: foundProduct.productID,
+        productId: foundProduct.productId,
         image: foundProduct.image,
         title: foundProduct.title,
         price: foundProduct.price,
@@ -42,8 +42,8 @@ export default function ProductDetails() {
         background: '#FBF7F3',      
         ctaAccent: '#FF6B35',         
         accentSecondary: '#2F4F3F',   // Deep Olive
-        textDark: '#1E1E1E',          // Dark text
-        muted: '#CFC6C1',             // Muted text
+        textDark: '#1E1E1E',          
+        muted: '#CFC6C1',            
     };
 
     const theme = createTheme({
@@ -57,15 +57,16 @@ export default function ProductDetails() {
 
     return (
        <Box sx={{
-    display: 'flex',
-    flexDirection: { xs: 'column', sm: 'row' },
-    justifyContent: { xs: 'center', sm: 'flex-start' }, 
-    alignItems: { xs: 'center', sm: 'flex-start' },    
-    gap: { xs: 4, sm: 6 },
-    p: { xs: 2, sm: 4 },
-    backgroundColor: COLORS.background,
-    minHeight: '80vh',
-}}>
+                 display: 'flex',
+                 flexDirection: { xs: 'column', sm: 'row' },
+                 justifyContent: { xs: 'center', sm: 'flex-start' }, 
+                 alignItems: { xs: 'center', sm: 'flex-start' },    
+                 gap: { xs: 4, sm: 6 },
+                 p: { xs: 2, sm: 4 },
+                 marginTop: 8,
+                 backgroundColor: COLORS.background,
+                 minHeight: '80vh',
+                } }>
    
     <Box sx={{
         flex: 1,
@@ -85,13 +86,13 @@ export default function ProductDetails() {
         />
     </Box>
 
-    {/* Product Details */}
+   
     <Box sx={{
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
         gap: 3,
-        textAlign: { xs: 'center', sm: 'left' } // center text on mobile
+        textAlign: { xs: 'center', sm: 'left' } 
     }}>
         <Typography variant="h3" sx={{ fontWeight: 'bold', color: COLORS.textDark }}>
             {foundProduct.title}
@@ -103,7 +104,7 @@ export default function ProductDetails() {
 
         <Typography variant="h4" sx={{ color: COLORS.accentSecondary, fontWeight: 'bold' }}>
             Rs.{foundProduct.price}{" "}
-            {foundProduct.category.toLowerCase() === "vegetables" ? "/ 1Kg" : ""}
+            {foundProduct.category.toLowerCase() === "vegetables" ? "/ Kg" : ""}
         </Typography>
 
         
@@ -148,7 +149,7 @@ export default function ProductDetails() {
             </IconButton>
         </Box>
 
-        {/* Add to Cart Button */}
+       
         <CardActions sx={{ justifyContent: 'center', mt: 2 }}>
             <ThemeProvider theme={theme}>
                 <Button

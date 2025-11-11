@@ -4,19 +4,18 @@ import {useDispatch} from 'react-redux'
 import { loadData } from "../Store/Slices/ProductDetails";
 
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import airpod01 from '../assets/products-img/airpod01.jpeg'
-import airpod02 from '../assets/products-img/airpod2.jpeg'
-import airpod03 from '../assets/products-img/airpods3.jpeg'
+import airpod01 from '../assets/products-img/airpod01.png'
+import airpod02 from '../assets/products-img/airpod2.png'
+import airpod03 from '../assets/products-img/airpods3.png'
 import shoes01 from '../assets/products-img/shoes01.jpg'
 import shoes02 from '../assets/products-img/shoes02.jpg'
 import shoes03 from '../assets/products-img/shoes03.jpg'
-import shoes04 from '../assets/products-img/shoes04.jpg'
-import tomato from '../assets/products-img/tomato.jpeg'
-import onion from '../assets/products-img/onion.jpeg'
-import mouse from '../assets/products-img/mouseLoq.jpeg'
-import goldenPearl from '../assets/products-img/goldenPearl.jpeg'
-import pumpkin from '../assets/products-img/pumpkin.jpeg'
+import FeaturedProducts from '../assets/featureProducts.png'
+import tomato from '../assets/products-img/tomato.png'
+import onion from '../assets/products-img/onion.png'
+import mouse from '../assets/products-img/mouseLoq.png'
+import goldenPearl from '../assets/products-img/goldenPearl.png'
+import pumpkin from '../assets/products-img/pumpkin.png'
 
 
 export default function FeaturedProduct (){
@@ -140,9 +139,10 @@ export default function FeaturedProduct (){
 
     return (
        <> 
-        <Typography variant="h4" component="div" className="font-[raleway] text-center sm:text-start pb-8 sm:pb-5 sm:ps-10 pt-10 ">
+        <Box className="font-[raleway] font-extrabold text-4xl text-center sm:text-start pb-8 sm:pb-10 sm:ps-10 pt-10 ">
             Featured Products
-        </Typography>
+        </Box>
+       
       <Box className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
                         gap-6 px-8 pb-4 overflow-x-hidden w-full"> 
         {productsData.filter((p)=> p.productId%2 ==0)

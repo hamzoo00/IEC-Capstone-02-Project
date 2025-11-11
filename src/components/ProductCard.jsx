@@ -17,6 +17,14 @@ export default function ProductCard({productId,image,alt,title,price,category}) 
 
     const dispatch = useDispatch();
     const product = {productId,image,title,price,category}
+    const COLORS = {
+        primaryNeutral: '#735343',    
+        background: '#FBF7F3',      
+        ctaAccent: '#FF6B35',         
+        accentSecondary: '#2F4F3F',   // Deep Olive
+        textDark: '#1E1E1E',          
+        muted: '#CFC6C1',            
+    };
 
   return ( <>    
     <Card sx={{   width: '100%',
@@ -45,10 +53,10 @@ export default function ProductCard({productId,image,alt,title,price,category}) 
             objectPosition: "center", }}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div" className='flex justify-between' >
+          <Typography gutterBottom variant="h5" component="div" className='flex justify-between'  >
            <Box> {title} </Box>
            
-           <Box>Rs.{price} </Box>
+           <Box className='font-bold text-md text-[#2F4F3F]'>Rs.{price} </Box>
            
           </Typography>
         
@@ -57,7 +65,19 @@ export default function ProductCard({productId,image,alt,title,price,category}) 
       </CardActionArea>
   </Link>
       <CardActions className='flex justify-center'>
-        <Button size="small" color="primary" onClick={()=> {dispatch(addItem(product));  alert("Item added to the cart") }}>
+        <Button size="small"
+                 sx={{
+                        px: 6,
+                        py: 1.5,
+                        fontWeight: 'bold',
+                        borderBottom: 3,
+                        color: COLORS.background,
+                        fontSize: 16,
+                        borderRadius: 2,
+                        backgroundColor: COLORS.ctaAccent ,
+                        '&:hover': { backgroundColor: COLORS.primaryNeutral },
+                    }}
+         onClick={()=> {dispatch(addItem(product));  alert("Item added to the cart") }}>
           Add to cart
         </Button>
       </CardActions>
