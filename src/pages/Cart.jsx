@@ -18,6 +18,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from "react-router";
 
+
+
+
+
+
 export default function Cart() {
   const dispatch = useDispatch();
   const { product, totalQuantity, totalPrice } = useSelector((state) => state.CartDetails);
@@ -88,6 +93,7 @@ export default function Cart() {
       <Grid container spacing={4}>
         <Grid item xs={12} md={8}>
           <Box sx={{ mb: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+           
             <Typography variant="h5" sx={{ fontWeight: 'bold', color: COLORS.text }}>
               Cart product ({totalQuantity})
             </Typography>
@@ -114,11 +120,19 @@ export default function Cart() {
                 '&:hover': { boxShadow: 4 }
               }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row', 
+                  alignItems: 'center',
+                  gap: 3
+                }}
+              >
+               
                 <CardMedia
                   component="img"
                   sx={{
-                    width: 100,
+                    width: 100,          
                     height: 100,
                     borderRadius: 2,
                     objectFit: 'cover'
@@ -126,7 +140,8 @@ export default function Cart() {
                   image={item.image}
                   alt={item.title}
                 />
-
+              
+               
                 <Box sx={{ flex: 1 }}>
                   <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 1, color: COLORS.text }}>
                     {item.title}
@@ -137,63 +152,59 @@ export default function Cart() {
                   <Typography variant="h6" sx={{ fontWeight: 'bold', color: COLORS.accent }}>
                     Rs.{item.price}
                   </Typography>
-                </Box>
-
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <IconButton
-                    onClick={() => handleDecreaseQuantity(item.productId)}
+              
+                  
+                  <Box
                     sx={{
-                      backgroundColor: COLORS.accent,
-                      color: '#fff',
-                      '&:hover': { backgroundColor: COLORS.secondary },
-                      width: 36,
-                      height: 36
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: {xs:0.5, sm:2},
+                      mt: 1,
+                      flexDirection: { xs: 'row', sm: 'col' }, 
+                      justifyContent: { xs: 'flex-start', sm: 'flex-end' } 
                     }}
                   >
-                    <RemoveIcon />
-                  </IconButton>
-
-                  <Typography
-                    sx={{
-                      minWidth: 40,
-                      textAlign: 'center',
-                      fontWeight: 'bold',
-                      fontSize: 18,
-                      border: `1px solid ${COLORS.accent}`,
-                      px: 2,
-                      py: 1,
-                      borderRadius: 1,
-                      color: COLORS.text
-                    }}
-                  >
-                    {item.quantity}
-                  </Typography>
-
-                  <IconButton
-                    onClick={() => handleIncreaseQuantity(item.productId)}
-                    sx={{
-                      backgroundColor: COLORS.accent,
-                      color: '#fff',
-                      '&:hover': { backgroundColor: COLORS.secondary },
-                      width: 36,
-                      height: 36
-                    }}
-                  >
-                    <AddIcon />
-                  </IconButton>
-
-                  <IconButton
-                    onClick={() => handleRemoveItem(item.productId)}
-                    sx={{
-                      color: COLORS.error,
-                      '&:hover': { backgroundColor: '#ffe6e6' },
-                      ml: 2
-                    }}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
+                    <IconButton
+                      onClick={() => handleDecreaseQuantity(item.productId)}
+                      sx={{ backgroundColor: COLORS.accent, color: '#fff', width: 36, height: 36, '&:hover': { backgroundColor: COLORS.secondary } }}
+                    >
+                      <RemoveIcon />
+                    </IconButton>
+              
+                    <Typography
+                      sx={{
+                        minWidth: 40,
+                        textAlign: 'center',
+                        fontWeight: 'bold',
+                        fontSize: 18,
+                        border: `1px solid ${COLORS.accent}`,
+                        px: 2,
+                        py: 1,
+                        borderRadius: 1,
+                        color: COLORS.text
+                      }}
+                    >
+                      {item.quantity}
+                    </Typography>
+              
+                    <IconButton
+                      onClick={() => handleIncreaseQuantity(item.productId)}
+                      sx={{ backgroundColor: COLORS.accent, color: '#fff', width: 36, height: 36, '&:hover': { backgroundColor: COLORS.secondary } }}
+                    >
+                      <AddIcon />
+                    </IconButton>
+              
+                    <IconButton
+                      onClick={() => handleRemoveItem(item.productId)}
+                      sx={{ color: COLORS.error, ml: 2, '&:hover': { backgroundColor: '#ffe6e6' } }}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Box>
                 </Box>
               </Box>
+
+
             </Card>
           ))}
         </Grid>
