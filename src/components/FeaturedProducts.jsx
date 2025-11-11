@@ -16,6 +16,8 @@ import onion from '../assets/products-img/onion.png'
 import mouse from '../assets/products-img/mouseLoq.png'
 import goldenPearl from '../assets/products-img/goldenPearl.png'
 import pumpkin from '../assets/products-img/pumpkin.png'
+import carrots from '../assets/products-img/carrots.png'
+import keyboard from '../assets/products-img/keyboard.png'
 
 
 export default function FeaturedProduct (){
@@ -129,6 +131,24 @@ export default function FeaturedProduct (){
        description: "Fully bass bosted and high picth sound",
        category: "headphones",
        productId: 11
+     },
+      {
+       image: carrots,
+       alt: "carrots",
+       title: "Carrots",
+       price: 120,
+       description: "Fresh and juicy carrots, sweet and yummy",
+       category: "vegeables",
+       productId: 12
+     },
+      {
+       image: keyboard,
+       alt: "keyboard",
+       title: "Mechanical Keyboard",
+       price: 12000,
+       description: "Red switch mechanical keyboard with rgb lightning",
+       category: "computer accessories",
+       productId: 13
      }
    ]
    setProductsData(products);

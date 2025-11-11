@@ -63,7 +63,7 @@ export default function ProductCard({productId,image,alt,title,price,category}) 
         </CardContent>
         
       </CardActionArea>
-  </Link>
+   </Link>
       <CardActions className='flex justify-center'>
         <Button size="small"
                  sx={{

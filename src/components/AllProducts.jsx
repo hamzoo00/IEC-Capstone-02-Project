@@ -5,8 +5,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Category } from "@mui/icons-material";
-import {Link} from 'react-router'
 import {useSelector} from 'react-redux'
 
 export default function AllProducts(){

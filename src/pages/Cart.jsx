@@ -82,6 +82,7 @@ export default function Cart() {
   }
 
   return (
+    
     <Container maxWidth="lg" sx={{ py: 4, backgroundColor: COLORS.background }}>
       <Typography
         variant="h3"
